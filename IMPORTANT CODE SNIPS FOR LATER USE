@@ -23,65 +23,7 @@ public class Main{
     }
 }
 
-************************************************
-CODE SNIP FOR --> PLUS ONE LEETCODE QUESTION
-import java.util.*;
-public class Solution{
-    
-    public static void printArray(int[] result){
-        for(int i=0;i<result.length;i++){
-            System.out.print(result[i]+" ");
-        }
-        System.out.println("");
-    }
-    public static int[] plusOne(int[] digits) {
-        String str = "";
-        if(digits.length-1 == 0){
-            str+=digits[0];
-        }else{
-            for(int i:digits){
-                str+=Integer.valueOf(i);
-            }
-        }
-        System.out.println();
-        System.out.println("VALUE "+str);
-        int result[] = new int[str.length()];
-        System.out.println("RESULT "+result.length);
-        int num = Integer.valueOf(str)+1;
-        System.out.println("NUM "+num);
-        String s1 = String.valueOf(num);
-        System.out.println("S1 "+s1.length());
-        for(int i=s1.length()-1;i>=0;i--){
-            result[i]=num%10;
-            num=num/10;
-        }
-        return result;
-        
-    }
-    
-    public static void main(String args[]){
-        int digits[] = {9};
-        System.out.println();
-        printArray(plusOne(digits));
-    }
-}
-
-************************************************
-
-CODE SNIP FOR RANDOM PRODUCT ID GENERATION
-
-import java.time.*; 
-public class HelloWorld{
-
-     public static void main(String []args){
-        LocalDate d = LocalDate.now();
-        LocalTime t = LocalTime.now();
-        String category = "ELECTRONICS";
-        System.out.println("PROD#"+category.substring(0,3)+d.getYear()+d.getMonthValue()+d.getDayOfMonth()+t.getHour()+t.getMinute()+t.getSecond());
-     }
-}
-
-************************************************
+************************************************************
 
 CODE SNIP FOR JAVA 8 LAMBDA ITERATION OF LIST OF NAMES 
 
