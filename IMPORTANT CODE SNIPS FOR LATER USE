@@ -1,0 +1,451 @@
+IMPORTANT CODE SNIPS FOR LATER USE 
+
+USE OF ENUMS
+
+enum SUVS{
+    scorpio(400),
+    fortuner(500),
+    endeavour(420),
+    safari(380);
+    
+    final int torque;
+    
+    SUVS (int torque){
+        this.torque = torque;
+    }
+}
+
+
+public class Main{
+    public static void main(String args[]){
+        
+        System.out.println("THE TORQUE OUTPUT OF SCORPIO IS "+SUVS.scorpio.torque+" NM ");
+    }
+}
+
+************************************************
+CODE SNIP FOR --> PLUS ONE LEETCODE QUESTION
+import java.util.*;
+public class Solution{
+    
+    public static void printArray(int[] result){
+        for(int i=0;i<result.length;i++){
+            System.out.print(result[i]+" ");
+        }
+        System.out.println("");
+    }
+    public static int[] plusOne(int[] digits) {
+        String str = "";
+        if(digits.length-1 == 0){
+            str+=digits[0];
+        }else{
+            for(int i:digits){
+                str+=Integer.valueOf(i);
+            }
+        }
+        System.out.println();
+        System.out.println("VALUE "+str);
+        int result[] = new int[str.length()];
+        System.out.println("RESULT "+result.length);
+        int num = Integer.valueOf(str)+1;
+        System.out.println("NUM "+num);
+        String s1 = String.valueOf(num);
+        System.out.println("S1 "+s1.length());
+        for(int i=s1.length()-1;i>=0;i--){
+            result[i]=num%10;
+            num=num/10;
+        }
+        return result;
+        
+    }
+    
+    public static void main(String args[]){
+        int digits[] = {9};
+        System.out.println();
+        printArray(plusOne(digits));
+    }
+}
+
+************************************************
+
+CODE SNIP FOR RANDOM PRODUCT ID GENERATION
+
+import java.time.*; 
+public class HelloWorld{
+
+     public static void main(String []args){
+        LocalDate d = LocalDate.now();
+        LocalTime t = LocalTime.now();
+        String category = "ELECTRONICS";
+        System.out.println("PROD#"+category.substring(0,3)+d.getYear()+d.getMonthValue()+d.getDayOfMonth()+t.getHour()+t.getMinute()+t.getSecond());
+     }
+}
+
+************************************************
+
+CODE SNIP FOR JAVA 8 LAMBDA ITERATION OF LIST OF NAMES 
+
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+        List<String> names = new ArrayList<String>();
+        names.add("Kartik");
+        names.add("Shashank");
+        names.add("Harish");
+        names.add("Srinivas");
+        names.add("Harsha");
+        
+        if(names.contains("Harsha Vardhan"))
+            System.out.println("YES ITS PRESENT");
+        else
+            System.out.println("NO ITS NOT");
+            
+        names.stream().forEach(n->{
+            if(n == "Harsha")
+                System.out.println("TRUE");
+        });
+        
+     }
+}
+
+****************************************************
+
+CODE SNIP VERY VERY IMPORTANT ASKED IN INTERVIEWS ABOUT COMPLETE OOPS
+
+class Animal{
+<bean id = "animalbean" class=""
+
+int hight;
+static String breed;
+
+Animal a = new Animal();
+
+
+void eat();
+protected void drink(){}
+public void sleep(){}
+}
+}
+
+class Dog extends Animal{
+     public void eat(){
+        System.out.println("Dog is eating");
+}
+
+}
+
+public class Test{
+    
+public static void main(String args[]){
+    Animal a = new Dog();
+    a.eat();
+
+Animal a1 = new Dog();
+Animal a2 = new Dog();
+Animal.breed = Labrador;
+    Sop(Animal.breed);
+}
+}
+
+class Hunams{
+
+ Animal a = new Animal();
+a.eat()
+}
+
+
+public Connection throws SQLException{
+    try{
+Connection con=null;
+    Class.forName();
+con = DriverManager.getConnection();
+Prepared statement
+result set
+}catch(Exception e){
+    System.out.println(e);
+}
+
+}
+
+
+
+
+
+
+
+
+
+protected class A{
+    
+    void display(){
+        System.out.println("IN PROTECTED METHOD OF CLASS A");
+    }
+}
+
+
+
+public class B extends A{
+    public static void main(String args[]){
+        B obj = new B();
+        obj.display();
+    }
+}
+
+// class Animal{
+//     void eat(){
+//         System.out.println("ANIMAL is eating");
+//     }
+//     int height;
+//     static String breed;
+// }
+
+// class Dog extends Animal{
+    
+//     public void eat(){
+//         System.out.println("Dog is eating");
+//     }
+
+// }
+
+// class Humans{
+//     public void inst(){
+//         Animal a = new Animal();
+//         a.eat();
+//     }
+// }
+
+// public class Test{
+//     public static void main(String args[]){
+//         Animal a1 = new Dog();
+//         Animal a2 = new Dog();
+        
+//         Humans h = new Humans();
+//         h.inst();
+//         Animal.breed = "Labrador";
+//         System.out.println(a1.height);
+//         if(a1 == a2)
+//             System.out.println("objects are same");
+//         else
+//             System.out.println("no not !");
+            
+        
+//     }
+// }
+
+
+// class ColorNotFoundException extends RuntimeException{
+    
+// }
+
+// class Building {  
+//  void color() throws ColorNotFoundException
+//  {
+//        System.out.println("Blue");
+//  }  
+// }
+// public class Room extends Building{
+//    void color() throws Exception
+//    {
+//        System.out.println("White");
+//    }  
+//    public static void main(String args[]){  
+//         Building obj = new Room();  
+//         try{
+//         obj.color();
+//         }catch(ColorNotFoundException e){
+//             System.out.println("IO"+""+e);
+//         }
+//         catch(Exception e){
+//             System.out.println("EX"+""+e);
+//         }
+//    } 
+// }
+
+*************************************************
+
+CODE SNIPS FOR ABSTRACT CLASSES
+
+abstract class Animal{
+    int age;
+    String name;
+    String sound;
+    
+    public abstract void makeNoise();
+    
+    static void mystatic(){
+        System.out.println("HELLO THIS IS A STATIC METHOD");
+        System.out.println();
+    }
+    
+    void nonstatic(){
+        System.out.println("HELLO THIS IS A NON-STATIC METHOD");
+    }
+    /*ITS NOT NECESSARY THAT WE CREATE ONLY ABSTRACT METHODS IN ABSTRACT CLASS. WE CAN EVEN CREATE CONCRETE METHODS, STATIC AND NON-STATIC METHODS TOO*/
+    
+    /*WE CAN EVEN CREATE FINAL , NON-FINAL , STATIC , NON-STATIC VARIABLES */
+}
+
+class Cat extends Animal{
+    @Override
+    public void makeNoise(){
+        System.out.println("CAT IS MAKING MEOW SOUND ");
+        System.out.println();
+    }
+}
+class Anim{
+    public static void main(String args[]){
+        Animal ani = new Cat();
+        ani.mystatic();
+        ani.nonstatic();
+        ani.makeNoise();
+    }
+}
+
+****************************************************
+
+CODE SNIPS FOR INTERFACES
+
+abstract class Animal{
+    public abstract void makeNoise();
+}
+
+interface AnimalStuff{
+    
+    /*EVERY VARIABLE IN AN INTERFACE IS AUTOMATICALLY STATIC AND FINAL, ONCE WE INSTANTIATE ANY VALUE AND THAT WILL BE USED FOR EVERY CLASS THIS INTERFACE IMPLEMENTS*/
+    int age = 2;
+    String name = "WHITE CAT";
+    
+    
+    /*WE DONT HAVE TO DENOTE ANY METHOD AS ABSTRACT BECAUSE EVERY METHOD IN INTERFACE IS BY DEFAULT ABSTRACT*/
+    void poop();
+    //IN INTERFACE WE CANNOT INSTANTIATE METHOD , BUT WITH THE HELP OF DEFAULT KEYWORD FROM JAVA8 E CAN INSTANTIATE
+    default void sounds(){
+        System.out.println("THIS ANIMAL IS MAKING SOUNDS");
+    }
+    
+    /*WE CAN CREATE AND INSTANTIATE STATIC METHODS TOO*/
+    static void poopy(){
+        System.out.println("POOPY POOPY");
+    }
+    
+    //FROM JAVA 9, WE CAN EVEN CREATE PRIVATE METHODS AND PRIVATE STATIC METHODS TOO IN AN INTERFACE
+    private static void feelings(){
+        System.out.println("CAT FEELS SHY");
+    }
+    
+    private void cuteness(){
+        System.out.println("CAT IS SO CUTE");
+    }
+}
+
+/*WE CAN IMPLEMENT AS MANY INTERFACES AS WE WANT BUT CANNOT EXTEND SO MANY CLASSES*/
+/*CLASS EXTENDS CLASS , CLASS EXTENDS INTERFACE , INTERFACE EXTENDS INTERFACE*/
+class Cat extends Animal implements AnimalStuff{
+    int age;
+    String name;
+    
+    
+    @Override
+    public void makeNoise(){
+        System.out.println("CAT IS MAKING MEOW SOUND");
+        System.out.println();
+    }
+    @Override
+    public void poop(){
+        System.out.println("CAT POOPS --> PHLBLLLBOPPPPBLBOP");
+        System.out.println();
+    }
+}
+
+class Anim{
+    public static void main(String args[]){
+        Cat myCat = new Cat();
+        myCat.poop();
+        myCat.makeNoise();
+        
+        /*CALLING INTERFACE STATIC METHODS USING INTERFACE NAME*/
+        AnimalStuff.poopy();
+    }
+}
+
+**************************************************
+
+CODE SNIPS FOR INNER CLASSES IN JAVA
+
+class OuterClass{
+    int age = 24;
+    
+    public void sayHi(){
+        System.out.println("HEY HI THIS IS KARTIK AND MY AGE IS "+age);
+        
+        //WE CAN ALSO CREATE A LOCAL CLASS INSIDE THIS METHOD TOO
+        
+        /*BUT WE CANNOT ACCESS THIS IN ANY OTHER CLASS , WE NEED TO INSTANTIATE HERE ITSELF INSIDE THE CLASS WHERE ITS WRITTEN*/
+        
+        class LocalInnerClass{
+            String designation = "FULL STACK DEVELOPER";
+            public void printTech(){
+                System.out.println("HEY I AM A "+designation);
+            }
+        }
+        
+        LocalInnerClass lic = new LocalInnerClass();
+        lic.printTech();
+    }
+    
+    /*SO THIS IS A NON-STATIC INNERCLASS, WHAT IF WE MAKE THIS STATIC ?*/
+    static class InnerClass{
+        int workExperience = 2;
+        
+        public void myExperience(){
+            System.out.println("AND MY WORK EXPERIENCE IS "+workExperience);
+        }
+    }
+}
+
+class MainClass{
+    public static void main(String args[]){
+        OuterClass outer = new OuterClass();
+        outer.sayHi();
+        
+        /*SO AS THIS IS A NON-STATIC INNERCLASS, WE ARE USING OUTERCLASS INSTANCE NAME TO CONNECT AND CALL THE INNERCLASS*/
+        // OuterClass.InnerClass inner = outer.new InnerClass();
+        // inner.myExperience();
+        
+        /*SO IF WE MAKE INNERCLASS STATIC THEN WE CAN JUST USE OUTERCLASS NAME TO CALL THE INNERCLASS AND ITS METHODS*/
+        //IT WORKS
+        OuterClass.InnerClass inner = new OuterClass.InnerClass();
+        inner.myExperience();
+    }
+}
+
+**************************************************
+
+CODE SNIP FOR WHAT IS PUBLIC STATIC VOID MAIN(STRING ARGS[])?
+
+
+//WHAT IS PUBLIC STATIC VOID MAIN IN JAVA?
+
+class MainClass{
+    public static void main(String args[]){
+        //MainClass.main(args);
+                
+        //WE CAN PASS ARGUMENTS AS AN ARRAY FOR STRING[] ARGS IN MAIN METHOD THROUGH IDE OR COMPILER WHILE EXECUTION
+        System.out.println(args[0]);
+        
+        System.out.println("PUBLIC STATIC VOID MAIN");
+
+        
+        
+        //THE MAIN METHOD SHOULD BE PUBLIC BECAUSE TO GET CALLED OUTSIDE THE CLASS
+        /*SO IF WE MAKE THIS METHOD PRIVATE OR PROTECTED THIS CANNOT BE ACCESSED BY JRE*/
+        
+        /*WE MAKE A METHOD STATIC SO THAT JRE DOESNT NEED INSTANCE OF THE CLASS TO CALL THAT PARTICULAR METHOD CLASS AUTOMATICALLY INSTANTIATES IT DURING COMPILATION*/
+        
+        /*THE RETURN TYPE IS VOID SO THAT OUR METHOD DOESNT HAVE TO RETURN ANYTHING*/
+        /*WHY OUR METHOD IS CALLED MAIN? 
+            ITS JUST CALLED MAIN, OUR JRE SEARCHES FOR .main() IF YOU USE ANYTHING ELSE IT WONT WORK
+        THE METHOD NAME IS DEFINED AS MAIN*/
+    }
+}
