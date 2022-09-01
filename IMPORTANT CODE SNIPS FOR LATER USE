@@ -23,7 +23,7 @@ public class Main{
     }
 }
 
-************************************************************
+************************************************
 
 CODE SNIP FOR JAVA 8 LAMBDA ITERATION OF LIST OF NAMES 
 
@@ -390,4 +390,227 @@ class MainClass{
             ITS JUST CALLED MAIN, OUR JRE SEARCHES FOR .main() IF YOU USE ANYTHING ELSE IT WONT WORK
         THE METHOD NAME IS DEFINED AS MAIN*/
     }
+}
+
+**************************************************************
+
+CODE SNIP FOR JAVA POLYMORPHISM
+
+class Animal{
+    String name;
+    String color;
+    
+    public void eat(){
+        System.out.println("crinch");
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public String getColor(){
+        return color;
+    }
+    
+    public void setColor(String color){
+        this.color = color;
+    }
+}
+
+class Dog extends Animal{
+    String breed;
+    
+    //METHOD OVERRIDING
+    //WE HAVE IMPLEMENTED AND OVERRIDDEN NEW EAT METHOD IN DOG WITH SAME METHOD SIGNATURE
+    public void eat(){
+        System.out.println("METHOD OVERRIDING");
+        System.out.println("kluch kluch");
+    }
+    
+    //METHOD OVERLOADING 
+    //WE HAVE IMPLEMENTED A NEW METHOD WITH MORE ARGUMENTS BUT WITH SAME METHOD SIGNATURE ,THATS CALLED METHOD OVERLOADING
+    
+    public void eat(int number){
+        System.out.println("METHOD OVERLOADING");
+        for(int i=0;i<number;i++){
+            System.out.println("kluch kluch");
+        }
+    }
+    public String getBreed(){
+        return breed;
+    }
+    
+    public void setBreed(String breed){
+        this.breed = breed;
+    }
+}
+
+class Cat extends Animal{
+    String litterPreference;
+    
+    //WE HAVE IMPLEMENTED AND OVERRIDDEN NEW EAT METHOD IN DOG WITH SAME METHOD SIGNATURE
+    public void eat(){
+        System.out.println("METHOD OVERRIDING");
+        System.out.println("chlmp chlmp");
+    }
+    
+    public String getLitterPreference(){
+        return litterPreference;
+    }
+    
+    public void setLitterPreference(String litterPreference){
+        this.litterPreference = litterPreference;
+    }
+}
+
+class MainClass{
+    public static void main(String args[]){
+        Animal anim = new Animal();
+        anim.eat();
+        
+        //SO DOG DOESNT HAVE ANY EAT METHOD ITS OVERRIDING ITS PARENT CLASS METHOD
+        Dog myDog = new Dog();
+        myDog.eat();
+        //BOTH THE ABOVE AND BELOW METHODS ARE SAME BUT THE BELOW ONE IS OVERLOADED WITH ARGUMENTS OR PARAMETERS , BUT THE METHOD SIGNATURE WILL BE SAME THATS THE CONCEPT
+        myDog.eat(3);
+        
+        Cat myCat = new Cat();
+        myCat.eat();
+        
+    }
+}
+
+
+********************************************************
+
+//FINAL KEYWORD IN JAVA
+/*
+1.FINAL CLASS
+2.FINAL METHOD
+3.FINAL VARIABLE
+*/
+
+final class Animal{
+    String name;
+    String color;
+    
+    public final void eat(){
+        System.out.println("crinch");
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public String getColor(){
+        return color;
+    }
+    
+    public void setColor(String color){
+        this.color = color;
+    }
+}
+
+//ONCE WE MAKE PARENT CLASS FINAL , WE CANNOT INHERIT FROM IT
+
+//ALSO ONCE WE MAKE ANY METHOD FINAL IN PARENT , WE CANNOT INHERIT IT IN CHILD CLASS
+
+//WE CAN MAKE VARIABLES FINAL AND THEN WE CANNOT CHANGE THEM
+class Dog extends Animal{
+    String breed;
+    
+    public String getBreed(){
+        return breed;
+    }
+    
+    public void setBreed(String breed){
+        this.breed = breed;
+    }
+}
+
+class MainClass{
+    
+    //THIS IS HOW CONSTANTS ARE WRITTEN USED IN THE PROGRAM
+    /*WE CAN SIMPLY ACCESS THEM OUTSIDE THE CLASS TOO JUST BY WRITING 
+        CLASSNAME.VARIABLENAME*/
+    public static final double pi = 3.1459;
+    public static void main(String args[]){
+        Animal ani = new Animal();
+        ani.eat();
+        
+        final Dog myDog = new Dog();
+        myDog.eat();
+    }
+}
+
+
+*********************************************************
+
+CODE SNIPS FOR MULTITHREADING IN JAVA
+
+//MULTITHREADING IN JAVA
+//THERE ARE TWO WAYS TO IMPLEMENT MULTITHREADING 
+//1.THREAD
+class Multithreading extends Thread implements Runnable{
+    
+    private int threadNumber;
+    public Multithreading (int threadNumber){
+        this.threadNumber = threadNumber;
+    }
+    
+    @Override
+    public void run(){
+        for(int i=0;i<5;i++){
+            System.out.println(i+" from thread "+threadNumber);
+            
+            try{
+                Thread.sleep(1000);
+            }catch(InterruptedException e){}
+        }
+    }
+    //WE CAN EVEN ASSIGN THREAD NUMBER TOO WHICH THREAD IS BEING EXECUTED
+    //ALSO WHILE EXECUTION IF ANY EXCEPTION OCCURS AT ONE THREAD THAT WONT AFFECT THE OTHER THREADS FROM EXECUTING
+    //WE CAN DO MULTITHREADING EITHER BY EXTENDING THREAD CLASS OR BY IMPLEMENTING RUNNABLE INTERFACE
+    
+    //IF WE IMPLEMENT RUNNABLE INTERFACE WE NEED TO IMPLEMENT OUR OWN THREAD METHOD
+}
+
+class MainClass{
+    public static void main(String args[]){
+        // Multithreading mt = new Multithreading(i);
+        // mt.run();
+        
+        // Multithreading mt2 = new Multithreading(i);
+        // mt2.run();
+        //IF WE USE .run() THEN AFTER COMPLETION OF FIRST METHOD ONLY SECOND WILL START PRINTING ELEMENTS
+        //BUT IF WE USE .start() THEN WE CAN RUN MULTIPLE CONCURRENT THREADS
+        
+        
+        /*SIMILARLY IF WE WANT TO RUN THREAD MULTIPLE TIMES*/
+        for(int i=0;i<5;i++){
+            Multithreading mt3 = new Multithreading(i);
+            mt3.start();
+            
+            //myThread.join(); WAITS FOR ONE THREAD TO COMPLETE AND THEN GOES TO NEXT ONE
+            //myThread.alive(); CHECKS WHETHER THE THREAD IS ALIVE OR NOT.
+        }
+        
+        //IF WE IMPLEMENT USING RUNNABLE INTERFACE , WE NEED TO WRITE LIKE THIS
+        for(int i=0;i<5;i++){
+            Multithreading myThing = new Multithreading(i);
+            Thread myThread = new Thread(myThing);
+            myThread.start();
+        }
+    }
+    
+    //SO THIS IS LIMITATION IF WE EXTEND THREAD WE ARE BLOCKED TO CANNOT EXTEND ANY OTHER CLASS, AS JAVA DOESNT SUPPORT MULTIPLE INHERITANCE
+    // BUT IF WE IMPLEMENT RUNNABLE INTERFACE THEN WE CAN EVEN IMPLEMENT MANY OTHER INTERFACES ALSO AND EXTEND ANY CLASS TOO.
 }
